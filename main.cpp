@@ -39,6 +39,10 @@ void PrintAboutText(string title, string txtpath);
 // The database is a global variable so that it can be accessed anywhere in the program.
 GeographyDatabase _database;
 
+const string DEFAULT_DB_HEADER = "default_dbs/";
+const string EXTRA_DB_HEADER = "extra_dbs/";
+const string TXT_FILES_HEADER = "txtfiles/";
+
 /*
 	Everything in the main.cpp file houses a different part of the Geography Comparer
 	program that can be accessed via user input. Said parts are organized into "Menu" Functions.
@@ -49,12 +53,12 @@ int main(int argc, char * argv[]) {
 	cout << fixed << setprecision(2);
 	// Add all of the default data sheets first before first starting up the comparer.
 	//_database.AddDataSheet("USData.csv", "USA");
-	_database.AddDataSheet("EuropeData.csv", "Europe");
-	_database.AddDataSheet("AsiaData.csv", "Asia");
-	_database.AddDataSheet("AfricaData.csv", "Africa");
-	_database.AddDataSheet("NorthAmericaData.csv", "North America");
-	_database.AddDataSheet("SouthAmericaData.csv", "South America");
-	_database.AddDataSheet("OceaniaData.csv", "Oceania");
+	_database.AddDataSheet(DEFAULT_DB_HEADER+"EuropeData.csv", "Europe");
+	_database.AddDataSheet(DEFAULT_DB_HEADER+"AsiaData.csv", "Asia");
+	_database.AddDataSheet(DEFAULT_DB_HEADER+"AfricaData.csv", "Africa");
+	_database.AddDataSheet(DEFAULT_DB_HEADER+"NorthAmericaData.csv", "North America");
+	_database.AddDataSheet(DEFAULT_DB_HEADER+"SouthAmericaData.csv", "South America");
+	_database.AddDataSheet(DEFAULT_DB_HEADER+"OceaniaData.csv", "Oceania");
 
 	system("clear");
 	cout << "Welcome to the Geographic Comparer!" << endl << endl; // This is the message that first appears when you start up the Geography Comparer
@@ -468,6 +472,7 @@ void ToAbout(){
 */
 void PrintAboutText(string title, string txtpath){
 	ifstream infile;
+	txtpath = TXT_FILES_HEADER + txtpath;
     infile.open(txtpath);
 
     system("clear");
@@ -565,7 +570,8 @@ void ToAddingLists(){
 				cout << "\033[A\033[2K";
 			}
 		}
-		if(_database.AddDataSheet(fileName, fileTitle)){ // The user's input is then used to find the corresponding .csv file and turn it into a country list
+		fileName = EXTRA_DB_HEADER + fileName;
+		if(_database.AddDataSheet("extra_dbs/" + fileName, fileTitle)){ // The user's input is then used to find the corresponding .csv file and turn it into a country list
 			cout << "\n\033[32mData Sheet Successfully added!\033[m" << endl;
 			cout << "Notice: Any data sheets you import into the Geography Comparer can be used as long as the program is running." << endl;
 			cout << "If you decide to turn off the Geography Comparer, you will have to reimport your data tables the next time you use the program." << endl;

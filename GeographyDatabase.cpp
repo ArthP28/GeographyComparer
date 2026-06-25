@@ -42,7 +42,6 @@ bool GeographyDatabase::AddDataSheet(string filePath, string listName){
     bool _dataSheetAdded = false;
     RegionList* _regionList = new RegionList(listName);
     ifstream infile;
-    filePath = "default_dbs/" + filePath;
     infile.open(filePath);
 
     // First check if the file exists:
