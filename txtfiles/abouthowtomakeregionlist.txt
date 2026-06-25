@@ -1,0 +1,9 @@
+The Geography Comparer is a versatile application that takes countries and administrative regions from all around the world.
+You can make your own list of countries to compare within the application through the following steps:
+1.  Open up a Spreadsheet Application such as Google Sheets and Microsoft Excel.
+2.  Type in each cell the country's data in the following order.
+    | Name | Region/Location | Official Name | Land Area | Population |
+    Note: DO NOT put commas in any of the cells! This is because of the following step below.
+3.  Once you have recorded the data of all the countries of a region or all the administrative divisions of a country, export the spreadsheet as a .csv (Comma Separated Value) file and store it into the GeographyComparer application.
+4.  Open up the Geography Comparer, import your .csv file into the Database, and your new list of countries is ready for comparing!
+(Please note that any new country lists you import will be active as long as the Geography Comparer is on. If you turn off the application, you will have to reimport them again.)
